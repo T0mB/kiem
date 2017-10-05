@@ -17,7 +17,7 @@
 		$(".demo").html("");
 
 		$(".demo").append('ids are:');
-	    $.getJSON('http://localhost:8080/app_kiem/api/huisservice/getlist+wijk_binnenstad', function(huis) {
+	    $.getJSON('http://localhost:8080/app/api/huisservice/getlist+wijk_binnenstad', function(huis) {
 	    	
 	        $.each(huis, function(index) {
 	            console.log(huis[index].id);
@@ -34,7 +34,7 @@
 	
 		
 		$(".sensordata").html("");
-		$.getJSON('http://localhost:8080/app_kiem/api/recordingservice/getdataforhouse/wijk_binnenstad/' + $('#huisidfield').val(), function(sensor) {
+		$.getJSON('http://localhost:8080/app/api/recordingservice/getdataforhouse/wijk_binnenstad/' + $('#huisidfield').val(), function(sensor) {
 	    	
 	        $.each(sensor, function(index) {
 	            $('.sensordata').append('<br/>' + sensor[index].id );
@@ -63,7 +63,7 @@
 	<p class="sensordata"></p>
 	
 	<p class="links">
-		<a href="http://localhost:8080/app_kiem/addSensor.jsp">Add a sensor</a>
+		<a href="http://localhost:8080/app/addSensor.jsp">Add a sensor</a>
 	</p>
 
 

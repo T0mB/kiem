@@ -86,7 +86,7 @@ public class SensorService {
 
 	@Path("/getsensorlist/{database}")
 	@GET
-	@Produces("application/java")
+	@Produces("application/json")
 	public Response getSensorList(@PathParam("database") String dbUrlBit) {
 
 		List<Sensor> list = new ArrayList<Sensor>();
@@ -94,6 +94,23 @@ public class SensorService {
 
 		String json = new Gson().toJson(list);
 		return Response.status(200).entity(json).build();
+	}
+	
+	@Path("/addSensorToHouse/{database}+{idsensor}+{idhuis}")
+	@POST
+	@Produces("application/json")
+	public Response addSensorToHouse(@PathParam("database") String dbUrlBit, @PathParam("idsensor") int idsensor, @PathParam("idhuis") int idhuis) {
+		String json = "fail" ;
+		boolean bool = false;
+		
+		bool = sdao.addSensorToHouse(dbUrlBit, idsensor, idhuis);
+		
+		if(bool) {
+			json = "succes";
+			return Response.status(200).entity(json).build();
+		}
+		
+		return Response.status(404).entity(json).build();
 	}
 
 }
